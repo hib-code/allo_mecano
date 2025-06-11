@@ -33,6 +33,59 @@
 </head>
 
 <body>
+    <style>
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .popup-box {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    width: 250px;
+  }
+
+  .popup-box a {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+
+  .popup-box a.phone {
+    background-color: #007bff;
+  }
+
+  .popup-box a.whatsapp {
+    background-color: #25D366;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .close-btn:hover {
+    color: red;
+  }
+</style>
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -48,7 +101,7 @@
             <div class="col-lg-7 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-4">
                     <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                    <small>Hay , Maroc, Sidi Slimane</small>
+                    <small>Hay reda , Maroc, Sidi Slimane</small>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center py-3">
                     <small class="far fa-clock text-primary me-2"></small>
@@ -159,8 +212,9 @@
 
 
 
-    <!-- Booking Start -->
-      <div class="container-fluid bg-secondary booking my-5 wow fadeInUp" data-wow-delay="0.1s">
+
+   <!-- Booking Start -->
+    <div class="container-fluid bg-secondary booking my-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-6 py-5">
@@ -172,43 +226,46 @@
                 <div class="col-lg-6">
                     <div class="bg-primary h-100 d-flex flex-column justify-content-center text-center p-5 wow zoomIn" data-wow-delay="0.6s">
                         <h1 class="text-white mb-4">Book For A Service</h1>
-                        <form>
+                       <form action="https://formsubmit.co/hibarochdi1234@gmail.com" method="POST">
+                            <input type="hidden" name="_captcha" value="false">
+                            
+
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Votre Nom" style="height: 55px;">
+                                <input type="text" name="nom" class="form-control border-0" placeholder="Votre Nom" style="height: 55px;" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Votre Email" style="height: 55px;">
+                                <input type="email" name="email" class="form-control border-0" placeholder="Votre Email" style="height: 55px;" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Choisissez un service</option>
-                                        <option value="2">Freinage (plaquettes, disques, liquide)</option>
-                                        <option value="3">Diagnostic électronique</option>
-                                        <option value="4">Climatisation & Recharge</option>
-                                        <option value="5">Réparation de pneus & équilibrage</option>
-                                        <option value="6">Révision complète</option>
-                                        <option value="7">Changement de batterie</option>
-                                        <option value="8">Alignement & Géométrie</option>
-                                        <option value="9">Contrôle technique & Préparation</option>
-                                        <option value="1">Vidange & Entretien moteur</option>
-                                    </select>
+                                <select name="service" class="form-select border-0" style="height: 55px;" required>
+                                    <option selected disabled>Choisissez un service</option>
+                                    <option value="Freinage">Freinage</option>
+                                    <option value="Diagnostic">Diagnostic électronique</option>
+                                    <option value="Climatisation">Climatisation & Recharge</option>
+                                    <option value="Pneus">Réparation de pneus & équilibrage</option>
+                                    <option value="Révision">Révision complète</option>
+                                    <option value="Batterie">Changement de batterie</option>
+                                    <option value="Alignement">Alignement & Géométrie</option>
+                                    <option value="Contrôle">Contrôle technique</option>
+                                    <option value="Vidange">Vidange moteur</option>
+                                </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="text"
-                                            class="form-control border-0 datetimepicker-input"
-                                            placeholder="Service Date" data-target="#date1" data-toggle="datetimepicker" style="height: 55px;">
-                                    </div>
+                                <input type="date" name="date" class="form-control border-0" placeholder="Date de service" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Demande spéciale"></textarea>
+                                <textarea name="message" class="form-control border-0" placeholder="Demande spéciale"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-secondary w-100 py-3" type="submit">Réservez maintenant</button>
+                                <button class="btn btn-secondary w-100 py-3" type="submit">Réservez maintenant</button>
                                 </div>
                             </div>
-                        </form>
+                            </form>
+                            <div id="confirmationMessage" style="display:none; margin-top: 20px; color: green;">
+                                Merci ! Votre demande a été envoyée avec succès.
+                            </div>
+
                     </div>
                 </div>
             </div>
@@ -216,26 +273,44 @@
     </div>
     <!-- Booking End -->
 
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Texte -->
+      <div class="col-lg-8 col-md-6">
+        <h6 class="text-primary text-uppercase">// Appeler pour réserver //</h6>
+        <h1 class="mb-4">Vous avez des questions ?</h1>
+        <p class="mb-0">
+          Notre équipe est à votre disposition pour vous aider.  
+          N’hésitez pas à nous contacter au <strong>+212 77 79 91 353</strong> ou via notre formulaire de contact.  
+          Nous nous engageons à vous répondre rapidement pour que votre expérience soit la meilleure possible.
+        </p>
+      </div>
 
-    <!-- Call To Action Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-8 col-md-6">
-                    <h6 class="text-primary text-uppercase">// Call To Action //</h6>
-                    <h1 class="mb-4">Have Any Pre Booking Question?</h1>
-                    <p class="mb-0">Lorem diam ea sit dolor labore. Clita et dolor erat sed est lorem sed et sit. Diam sed duo magna erat et stet clita ea magna ea sed, sit labore magna lorem tempor justo rebum dolores. Eos dolor sea erat amet et, lorem labore lorem at dolores. Stet ea ut justo et, clita et et ipsum diam.</p>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="bg-primary d-flex flex-column justify-content-center text-center h-100 p-4">
-                        <h3 class="text-white mb-4"><i class="fa fa-phone-alt me-3"></i>+012 345 6789</h3>
-                        <a href="" class="btn btn-secondary py-3 px-5">Contact Us<i class="fa fa-arrow-right ms-3"></i></a>
-                    </div>
-                </div>
-            </div>
+      <!-- Bouton & Popup -->
+      <div class="col-lg-4 col-md-6">
+        <div class="bg-primary d-flex flex-column justify-content-center text-center h-100 p-4">
+          <h3 class="text-white mb-4">
+            <i class="fa fa-phone-alt me-3"></i>+212 77 79 91 353
+          </h3>
+          <a class="btn btn-secondary py-3 px-5" style="cursor: pointer;" onclick="openPopup()">
+            Contactez-nous <i class="fa fa-arrow-right ms-3"></i>
+          </a>
         </div>
+
+        <!-- POPUP -->
+        <div class="overlay" id="popupOverlay">
+          <div class="popup-box">
+            <div class="close-btn" onclick="closePopup()">×</div>
+            <h4>Contactez via :</h4>
+            <a href="tel:+212777991353" class="phone">Téléphone</a>
+            <a href="https://wa.me/212777991353" target="_blank" class="whatsapp">WhatsApp</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- Call To Action End -->
+  </div>
+</div>
 
 
     <!-- Footer Start -->
@@ -321,6 +396,15 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        function openPopup() {
+            document.getElementById("popupOverlay").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("popupOverlay").style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
